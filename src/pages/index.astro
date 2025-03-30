@@ -1,11 +1,57 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import FloatingButtons from '../components/FloatingButtons.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Hey Dev - Desarrollo de Software">
+	<html lang="es" class="scroll-smooth">
+		<head>
+			<meta charset="UTF-8" />
+			<meta name="description" content="Desarrollo de software a medida para empresas" />
+			<meta name="viewport" content="width=device-width" />
+			<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+			<meta name="generator" content={Astro.generator} />
+			<style>
+				html {
+					scroll-behavior: smooth;
+					scroll-padding-top: 2rem;
+					scroll-timeline: smooth;
+					scroll-timeline-axis: block;
+					scroll-timeline-name: smooth-scroll;
+				}
+				@keyframes smooth-scroll {
+					from {
+						scroll-position: 0;
+					}
+					to {
+						scroll-position: 100%;
+					}
+				}
+				/* Prevenir parpadeo al cargar el tema */
+				html.dark {
+					color-scheme: dark;
+				}
+			</style>
+		</head>
+		<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+			<ThemeToggle />
+			<main>
+				<Hero />
+				<Services />
+				<Testimonials />
+				<Contact />
+			</main>
+			<Footer />
+			<FloatingButtons />
+		</body>
+	</html>
 </Layout>
